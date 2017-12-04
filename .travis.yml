@@ -18,12 +18,12 @@ matrix:
   #- env: BUILD=cabal GHCVER=7.10.3 CABALVER=1.22
   #addons: {apt: {packages: [cabal-install-1.22,ghc-7.10.3], sources: [hvr-ghc]}}
 
-  - env: BUILD=stack RESOLVER=lts-6.35 STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.22
+  - env: BUILD=stack RESOLVER=lts-6.35 STACK_YAML=stack-7.10.yaml STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.22
     addons: {apt: {packages: [libgmp-dev,cabal-install-1.22,libsdl1.2-dev], sources: [hvr-ghc]}}
 
   # stack/linux use a pre-installed cabal-install for faster builds
   # GHC 8.0.1
-  - env: BUILD=stack RESOLVER=lts-7.24 STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.24
+  - env: BUILD=stack RESOLVER=lts-7.24 STACK_YAML=stack-8.0.1.yaml STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.24
     addons: {apt: {packages: [libgmp-dev,cabal-install-1.24,libsdl1.2-dev], sources: [hvr-ghc]}}
 
   - env: BUILD=stack RESOLVER=lts-9.16 STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.24
@@ -83,6 +83,7 @@ script:
       PATH=$PATH
       BUILD=$BUILD
       RESOLVER=$RESOLVER
+      STACK_YAML=$STACK_YAML
       STACK_BUILD_OPTIONS="$STACK_BUILD_OPTIONS"
       GHCVER=$GHCVER
       GHC_OPTIONS="$GHC_OPTIONS"
