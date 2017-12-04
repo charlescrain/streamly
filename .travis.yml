@@ -23,7 +23,7 @@ matrix:
 
   # stack/linux use a pre-installed cabal-install for faster builds
   # GHC 8.0.1
-  - env: BUILD=stack RESOLVER=lts-7.24 STACK_YAML=stack-8.0.1.yaml STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.24
+  - env: BUILD=stack RESOLVER=lts-7.24 STACK_YAML=stack-8.0.yaml STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.24
     addons: {apt: {packages: [libgmp-dev,cabal-install-1.24,libsdl1.2-dev], sources: [hvr-ghc]}}
 
   - env: BUILD=stack RESOLVER=lts-9.16 STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.24
@@ -59,7 +59,7 @@ install: true
 script:
   - |
     # Customizable options
-    PACKAGE_TEST_VER="390a9f4811257f860c4e4e684e95eb288713932e"
+    PACKAGE_TEST_VER="9e46e9f60b2382350aef748df1d68fc9c83ec149"
     GHC_OPTIONS="-O0 -Werror"
     test -n "$COVERALLS" && \
       COVERALLS_OPTIONS="--coverage-mode=StrictlyFullLines \
