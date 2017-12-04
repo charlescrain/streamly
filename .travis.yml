@@ -18,12 +18,12 @@ matrix:
   #- env: BUILD=cabal GHCVER=7.10.3 CABALVER=1.22
   #addons: {apt: {packages: [cabal-install-1.22,ghc-7.10.3], sources: [hvr-ghc]}}
 
-  - env: BUILD=stack RESOLVER=lts-6.35 STACK_YAML=../../stack-7.10.yaml STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.22
+  - env: BUILD=stack RESOLVER=lts-6.35 STACK_YAML=stack-7.10.yaml STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.22
     addons: {apt: {packages: [libgmp-dev,cabal-install-1.22,libsdl1.2-dev], sources: [hvr-ghc]}}
 
   # stack/linux use a pre-installed cabal-install for faster builds
   # GHC 8.0.1
-  - env: BUILD=stack RESOLVER=lts-7.24 STACK_YAML=../../stack-8.0.1.yaml STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.24
+  - env: BUILD=stack RESOLVER=lts-7.24 STACK_YAML=stack-8.0.1.yaml STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.24
     addons: {apt: {packages: [libgmp-dev,cabal-install-1.24,libsdl1.2-dev], sources: [hvr-ghc]}}
 
   - env: BUILD=stack RESOLVER=lts-9.16 STACK_BUILD_OPTIONS="--flag streamly:examples-sdl" CABALVER=1.24
@@ -59,7 +59,7 @@ install: true
 script:
   - |
     # Customizable options
-    PACKAGE_TEST_VER="536355be0507c234e5b4ea51dafdb8c3d1ede948"
+    PACKAGE_TEST_VER="390a9f4811257f860c4e4e684e95eb288713932e"
     GHC_OPTIONS="-O0 -Werror"
     test -n "$COVERALLS" && \
       COVERALLS_OPTIONS="--coverage-mode=StrictlyFullLines \
